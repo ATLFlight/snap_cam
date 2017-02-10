@@ -78,6 +78,43 @@ SnapCam::SnapCam(std::string config_str)
 
 int SnapCam::initialize(CamConfig cfg)
 {
+  // TODO-JYW-LEFT OFF: Use the Snapdragon::FindCamera implementation to enhance this object.
+  // See the example in ATLFlight here: https://github.com/ATLFlight/ros-examples/blob/master/src/camera/SnapdragonCameraManager.cpp
+  // Also modify the timestamp code in PX4 to use the offset calculated in using the code provided
+  // by Rama:
+  //
+  // Adjust the timestamp of the IMU data to the apps processor clock. This can be done by
+  // doing the following code snippet:
+  //
+  // get the adsp offset.
+  // int64_t dsptime;
+  // static const char qdspTimerTickPath[] = "/sys/kernel/boot_adsp/qdsp_qtimer";
+  // char qdspTicksStr[20] = "";
+  // static const double clockFreq = 1 / 19.2;
+  // FILE * qdspClockfp = fopen( qdspTimerTickPath, "r" );
+  // fread( qdspTicksStr, 16, 1, qdspClockfp );
+  // uint64_t qdspTicks = strtoull( qdspTicksStr, 0, 16 );
+  // fclose( qdspClockfp );  dsptime = (int64_t)( qdspTicks*clockFreq*1e3 );
+  //
+  // get the apps proc timestamp;
+  // int64_t appstimeInNs;
+  // struct timespec t;
+  //
+  // switch( clockType )
+  // {
+  //   case SENSOR_CLOCK_SYNC_TYPE_MONOTONIC:
+  //     clock_gettime( CLOCK_MONOTONIC, &t );
+  //     break;
+  //   default:
+  //     clock_gettime( CLOCK_REALTIME, &t );
+  //     break;
+  // }
+  //
+  // uint64_t timeNanoSecMonotonic = (uint64_t)(t.tv_sec) * 1000000000ULL + t.tv_nsec;
+  // appstimeInNs = (int64_t)timeNanoSecMonotonic;
+  // offsetInNs = appstimeInNs - dsptime;
+  //
+
 	int rc;
 	rc = ICameraDevice::createInstance(cfg.func, &camera_);
 

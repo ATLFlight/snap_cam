@@ -314,7 +314,7 @@ void sendOptFlowMessage()
 		rb_imu.peak_head(&latest_gyro);
 
     // TODO-JYW: TESTING-TESTING:
-    latest_gyro.time_usec = integration_start_time - 50;
+    latest_gyro.time_usec = integration_start_time + 50;
     // TODO-JYW: TESTING-TESTING:
 
 		if (integration_start_time > latest_gyro.time_usec) {

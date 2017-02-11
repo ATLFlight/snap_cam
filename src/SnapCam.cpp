@@ -80,6 +80,7 @@ int SnapCam::initialize(CamConfig cfg)
 {
   // TODO-JYW-LEFT OFF: Use the Snapdragon::FindCamera implementation to enhance this object.
   // See the example in ATLFlight here: https://github.com/ATLFlight/ros-examples/blob/master/src/camera/SnapdragonCameraManager.cpp
+  //
   // Also modify the timestamp code in PX4 to use the offset calculated in using the code provided
   // by Rama:
   //
@@ -114,6 +115,9 @@ int SnapCam::initialize(CamConfig cfg)
   // appstimeInNs = (int64_t)timeNanoSecMonotonic;
   // offsetInNs = appstimeInNs - dsptime;
   //
+  // While verify the optical flow values with hard coded changes (instead of the code
+  // describe above) I receive a FastRPC bulk data error.  This will need to be debugged.
+  // Modify the mavlink stream stream settings to workaround the above?  See the notes document.
 
 	int rc;
 	rc = ICameraDevice::createInstance(cfg.func, &camera_);

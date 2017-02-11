@@ -310,6 +310,10 @@ void sendOptFlowMessage()
 
 		uint64_t integration_start_time = oldest_flow.time_usec - oldest_flow.integration_time_us;
 
+    // TODO-JYW: TESTING-TESTING:
+    lastest_gyro.time_usec = integration_start_time - 50;
+    // TODO-JYW: TESTING-TESTING:
+
 		GyroTimestamped latest_gyro;
 		rb_imu.peak_head(&latest_gyro);
 
@@ -363,7 +367,9 @@ void sendOptFlowMessage()
 		sensor_msg.integrated_ygyro = ygyro_int;
 		sensor_msg.integrated_zgyro = zgyro_int;
 
-		//send optical flow mavlink message to px4
+		// TODO-JYW: TESTING-TESTING:
+		WARN("Sending optic flow data.");
+    //send optical flow mavlink message to px4
 		send_mavlink_message(MAVLINK_MSG_ID_OPTICAL_FLOW_RAD, &sensor_msg, 200);
 	}
 }

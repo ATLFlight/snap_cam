@@ -97,11 +97,13 @@ enum OutputFormatType {
 	JPEG_FORMAT
 };
 
+// TODO-JYW: TESTING-TESTING: Changing the camera ID below.
+
 // TODO HIRES and OPTIC_FLOW are switched?
 enum CamFunction {
-	CAM_FUNC_OPTIC_FLOW = 0,
+	CAM_FUNC_OPTIC_FLOW = 2,
 	CAM_FUNC_HIRES = 1,
-	CAM_FUNC_RIGHT_SENSOR = 2,
+	CAM_FUNC_RIGHT_SENSOR = 0,
 	CAM_FUNC_STEREO = 3,
 };
 

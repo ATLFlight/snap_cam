@@ -311,7 +311,7 @@ void sendOptFlowMessage()
 		uint64_t integration_start_time = oldest_flow.time_usec - oldest_flow.integration_time_us;
 
     // TODO-JYW: TESTING-TESTING:
-    lastest_gyro.time_usec = integration_start_time - 50;
+    latest_gyro.time_usec = integration_start_time - 50;
     // TODO-JYW: TESTING-TESTING:
 
 		GyroTimestamped latest_gyro;

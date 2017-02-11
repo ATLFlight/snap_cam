@@ -310,12 +310,12 @@ void sendOptFlowMessage()
 
 		uint64_t integration_start_time = oldest_flow.time_usec - oldest_flow.integration_time_us;
 
+		GyroTimestamped latest_gyro;
+		rb_imu.peak_head(&latest_gyro);
+
     // TODO-JYW: TESTING-TESTING:
     latest_gyro.time_usec = integration_start_time - 50;
     // TODO-JYW: TESTING-TESTING:
-
-		GyroTimestamped latest_gyro;
-		rb_imu.peak_head(&latest_gyro);
 
 		if (integration_start_time > latest_gyro.time_usec) {
 			WARN("The integration start time is %lld us ahead of the lastest IMU", integration_start_time - latest_gyro.time_usec);
